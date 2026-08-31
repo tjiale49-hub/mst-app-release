@@ -1,0 +1,18 @@
+{
+  "name": "分子语堂 · 化工×英语学习",
+  "short_name": "分子语堂",
+  "description": "化工与六级英语双轨学习 App：每日更新学习任务、离线可用、AI 问答。",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4f0e4",
+  "theme_color": "#1f2d27",
+  "lang": "zh-CN",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

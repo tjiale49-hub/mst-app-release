@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分子语堂 · 每日学习仪表盘</title>
+<meta name="description" content="分子语堂每日学习仪表盘：每日任务自动更新、六级倒计时、打卡连击、艾宾浩斯复习、云端进度同步与 AI 每日测验。">
+<meta name="theme-color" content="#1f2d27">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="home">
+
+<div id="nav-mount"></div>
+
+<!-- ================= 每日仪表盘 HERO ================= -->
+<header class="dash-hero">
+  <div class="wrap">
+    <div class="dash-top">
+      <div>
+        <div class="dash-kicker"><span class="dot"></span>DAILY MISSION · 今日任务已自动更新</div>
+        <div class="dash-date" id="dashDate">—</div>
+        <h1>今天，也要<span class="hl">向前一格</span></h1>
+        <p style="font-size: 14.5px; color: var(--ink-2); margin-top: 14px; line-height: 1.9; max-width: 520px;">
+          每日 8 项任务：3 个六级词 · 2 条化工知识 · 1 条求职锦囊 · 2 道每日一题。
+          完成即打卡，内容每天 00:00 自动轮换 —— 像蒸馏塔一样稳定运转。
+        </p>
+
+        <div class="dash-actions">
+          <span class="streak-badge"><span class="fire">🔥</span>连击 <span id="dashStreak">0</span> 天</span>
+          <button class="btn primary sm" id="installBtn" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="15" height="15"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+            安装到桌面 / 手机
+          </button>
+          <a class="btn sm" href="#daily">开始今日任务 ↓</a>
+          <a class="btn teal sm" href="qa.html">AI 答疑 →</a>
+        </div>
+
+        <div class="sync-row">
+          <button class="btn sm" id="syncUp">⇧ 上传进度到云端</button>
+          <button class="btn sm" id="syncDown">⇩ 从云端拉取进度</button>
+          <span class="install-hint">多设备进度同步（Cloudflare Worker KV）· 联网使用 · 详见工具页</span>
+        </div>
+      </div>
+
+      <div class="countdown-card">
+        <button class="cd-edit" id="cdEdit" title="修改考试日期">修改</button>
+        <div class="cd-label" id="cdLabel">距六级考试还有</div>
+        <div class="cd-num" id="cdNum">—</div>
+        <div class="cd-days">DAYS</div>
+        <div class="cd-date" id="cdDate">—</div>
+        <div style="border-top: 1px solid #55645c; margin-top: 16px; padding-top: 12px;">
+          <a href="cet6.html" style="color: #f5c98a; font-family: var(--mono); font-size: 11.5px; letter-spacing: 1px;">进入六级备考中心 →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-shell">
+      <div class="progress-top">
+        <span class="pt">今日任务进度</span>
+        <span class="pn"><span id="dashBarText">0 / 8</span></span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="dashBar"></div></div>
+      <div class="progress-note" id="cycleInfo">内容每日 00:00 自动轮换</div>
+    </div>
+  </div>
+</header>
+
+<div class="hazard"></div>
+
+<!-- ================= SEC.01 每日任务 ================= -->
+<section class="sec" id="daily">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.01</span>
+      <h2 class="sec-title">今日任务清单</h2>
+      <span class="sec-sub">TODAY'S MISSIONS · AUTO-ROTATED</span>
+    </div>
+    <div class="rule reveal"></div>
+    <p class="sec-desc reveal">勾选即完成打卡。单词按艾宾浩斯曲线进入复习队列，化工知识来自五大单元操作与反应工程。</p>
+
+    <div id="taskArea" style="margin-top: 40px;">
+      <div id="wordZone" class="grid-3"></div>
+      <div id="chemZone" class="grid-2" style="margin-top: 22px;"></div>
+      <div id="tipZone" class="grid-2" style="margin-top: 22px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEC.02 复习队列 ================= -->
+<section class="sec" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.02</span>
+      <h2 class="sec-title">艾宾浩斯复习队列</h2>
+      <span class="sec-sub">EBBINGHAUS REVIEW · 1 / 2 / 4 / 7 DAYS</span>
+    </div>
+    <div class="rule reveal"></div>
+    <p class="sec-desc reveal">鼠标悬停查看释义。这是过去 1、2、4、7 天你记过的词 —— 抗遗忘的唯一办法是按节点重见。</p>
+    <div class="card reveal" style="margin-top: 32px;">
+      <div class="review-zone" id="reviewZone"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEC.03 每日一题 + AI 测验 ================= -->
+<section class="sec" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.03</span>
+      <h2 class="sec-title">每日一题 × AI 定制测验</h2>
+      <span class="sec-sub">DAILY QUIZ · AI POWERED</span>
+    </div>
+    <div class="rule reveal"></div>
+
+    <div class="grid-2" style="margin-top: 40px;">
+      <div class="card reveal d1">
+        <div id="quizZone"></div>
+      </div>
+      <div class="card reveal d2">
+        <span class="card-tag gold">AI LIVE · 联网实时生成</span>
+        <h3 style="font-family: var(--serif); font-size: 19px; margin: 10px 0 8px;">AI 每日定制测验</h3>
+        <p style="font-size: 13.5px; color: var(--ink-2); line-height: 1.8;">
+          每天由 AI 实时生成 5 道六级 + 5 道化工题，题目每日全新、永不出圈你正在学的范围。
+          需先在 <a href="qa.html" style="color: var(--rust); font-weight: 600;">AI 问答室</a> 配置模型（免费模型即可）。
+        </p>
+        <button class="btn primary sm" id="aiQuizBtn" style="margin-top: 16px;">✦ AI 出今日测验（联网）</button>
+        <div id="aiQuizZone" style="margin-top: 18px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEC.04 双轨入口 ================= -->
+<section class="sec" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.04</span>
+      <h2 class="sec-title">深入学习的四条轨道</h2>
+      <span class="sec-sub">FOUR TRACKS</span>
+    </div>
+    <div class="rule reveal"></div>
+
+    <div class="grid-4" style="margin-top: 40px;">
+      <a class="elem accent-rust reveal d1" href="cet6.html">
+        <div class="num">No. 01 · CET-6</div>
+        <div class="sym">六<small>级备考</small></div>
+        <div class="ename">CET-6 CENTER</div>
+        <div class="e-meta"><span>词汇 · 听读 · 写译 · 真题</span><span>→</span></div>
+      </a>
+      <a class="elem accent-teal reveal d2" href="chem.html">
+        <div class="num">No. 02 · CHE</div>
+        <div class="sym">化<small>学工程</small></div>
+        <div class="ename">CHEMICAL ENGINEERING</div>
+        <div class="e-meta"><span>五大单元操作</span><span>→</span></div>
+      </a>
+      <a class="elem accent-rust reveal d3" href="career.html">
+        <div class="num">No. 03 · JOB</div>
+        <div class="sym">职<small>业发展</small></div>
+        <div class="ename">CAREER CENTER</div>
+        <div class="e-meta"><span>岗位 · 技能 · 面试</span><span>→</span></div>
+      </a>
+      <a class="elem accent-teal reveal d3" href="qa.html">
+        <div class="num">No. 04 · AI</div>
+        <div class="sym">问<small>答疑室</small></div>
+        <div class="ename">AI Q&amp;A ROOM</div>
+        <div class="e-meta"><span>多模型 · 免费</span><span>→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEC.05 更新日志 ================= -->
+<section class="sec" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.05</span>
+      <h2 class="sec-title">更新日志</h2>
+      <span class="sec-sub">CHANGELOG / REV. B</span>
+    </div>
+    <div class="rule reveal"></div>
+
+    <div class="card reveal" style="margin-top: 36px;">
+      <div style="display: grid; gap: 0;">
+        <div style="display: flex; gap: 18px; padding: 16px 4px; border-bottom: 1px dashed var(--grid-strong); flex-wrap: wrap;">
+          <span style="font-family: var(--mono); font-size: 12px; color: var(--rust); font-weight: 700; min-width: 92px;">2026.08.31</span>
+          <div style="flex: 1; min-width: 240px;">
+            <b>REV. B · 升级为学习 App</b>
+            <p style="font-size: 13.5px; color: var(--ink-2); margin-top: 4px;">每日任务自动轮换、打卡连击、六级倒计时、艾宾浩斯复习、云端进度同步、AI 每日测验上线；新增六级备考中心与化工求职中心；支持安装到桌面/手机主屏幕。</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 18px; padding: 16px 4px; border-bottom: 1px dashed var(--grid-strong); flex-wrap: wrap;">
+          <span style="font-family: var(--mono); font-size: 12px; color: var(--ink-2); font-weight: 700; min-width: 92px;">2026.08.30</span>
+          <div style="flex: 1; min-width: 240px;">
+            <b>平台上线 REV. A</b>
+            <p style="font-size: 13.5px; color: var(--ink-2); margin-top: 4px;">化工五大单元操作 + 反应工程内容上线；英语词汇闪卡与语法专题上线；AI 问答室开放多模型接入。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+
+<script src="js/data-words.js"></script>
+<script src="js/data-chem.js"></script>
+<script src="js/data-questions.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

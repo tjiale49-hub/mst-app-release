@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英语学习 · 分子语堂</title>
+<meta name="description" content="英语学习模块：词汇闪卡、语法专题、阅读写作方法、听说训练与化工英语 ESP 专题，配合随堂测验巩固。">
+<link rel="icon" href="icons/icon-192.png">`n<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">`n<link rel="manifest" href="manifest.webmanifest">`n<meta name="theme-color" content="#1f2d27">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="english">
+
+<div id="nav-mount"></div>
+
+<!-- ================= 页面横幅 ================= -->
+<header class="page-hero">
+  <div class="wrap">
+    <div class="ph-kicker reveal">TRACK 02 · ENGLISH STUDY</div>
+    <h1 class="reveal d1">英语学习</h1>
+    <div class="ph-en reveal d2">FROM WORDS TO WORKS · 从词汇到表达</div>
+    <p class="ph-desc reveal d2">
+      以"能读懂文献、能写出报告"为目标组织内容：闪卡记词打基础，语法专题破难点，
+      精读写作练输出，影子跟读磨听说 —— 再用化工英语专题把两条轨道拧成一股绳。
+    </p>
+    <div class="chip-row reveal d3" style="margin-top: 24px;">
+      <a class="chip" href="#vocab">① 词汇闪卡</a>
+      <a class="chip" href="#grammar">② 语法专题</a>
+      <a class="chip" href="#rw">③ 阅读写作</a>
+      <a class="chip" href="#ls">④ 听说训练</a>
+      <a class="chip" href="#esp">⑤ 化工英语</a>
+      <a class="chip" href="#quiz">⑥ 随堂测验</a>
+    </div>
+  </div>
+</header>
+
+<div class="hazard"></div>
+
+<!-- ================= SEC.01 词汇 ================= -->
+<section class="sec" id="vocab">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.01</span>
+      <h2 class="sec-title">词汇闪卡</h2>
+      <span class="sec-sub">VOCABULARY FLASHCARDS · 36 CARDS</span>
+    </div>
+    <div class="rule reveal"></div>
+
+    <div id="dailyBox" class="card reveal d1" style="margin-top: 32px; background: var(--teal-soft); border-color: var(--teal-deep);">
+      <span class="card-tag teal">SENTENCE OF THE DAY</span>
+      <p id="dailyZh" style="font-family: var(--serif); font-size: 19px; font-weight: 700; margin-top: 10px; line-height: 1.6;"></p>
+      <p id="dailyEn" style="font-size: 14px; color: var(--ink-2); margin-top: 8px; font-style: italic;"></p>
+    </div>
+
+    <div class="flash-zone reveal d2" style="margin-top: 36px;">
+      <div class="chip-row" id="flashCats">
+        <button class="chip on" data-cat="all">全部 (36)</button>
+        <button class="chip" data-cat="cet4">四级核心 (12)</button>
+        <button class="chip" data-cat="cet6">六级进阶 (12)</button>
+        <button class="chip" data-cat="esp">化工英语 (12)</button>
+      </div>
+
+      <div class="flashcard" id="flashcard">
+        <div class="flash-face front">
+          <span class="flash-cat" id="fCat">ALL</span>
+          <div class="flash-word" id="fWord">absorb</div>
+          <div class="flash-phon" id="fPhon">/əbˈzɔːb/</div>
+          <div class="flash-hint">CLICK TO FLIP · 点击翻面</div>
+        </div>
+        <div class="flash-face back">
+          <div class="flash-def" id="fDef"></div>
+          <div class="flash-ex" id="fEx"></div>
+        </div>
+      </div>
+
+      <div class="flash-nav">
+        <button class="btn sm" id="fPrev">← 上一个</button>
+        <span class="flash-count" id="fCount">1 / 36</span>
+        <button class="btn sm" id="fNext">下一个 →</button>
+        <button class="btn sm dark" id="fShuffle">⇄ 打乱</button>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top: 48px;">
+      <div class="card reveal d1">
+        <span class="card-tag">METHOD</span>
+        <h3 style="font-family: var(--serif); font-size: 17px; margin: 8px 0 6px;">间隔重复</h3>
+        <p style="font-size: 13.5px; color: var(--ink-2);">按 1-2-4-7-15 天的节奏复习同一批词，记忆留存率远高于集中突击。每天 3 组 × 12 张，碎片时间完成。</p>
+      </div>
+      <div class="card reveal d2">
+        <span class="card-tag teal">METHOD</span>
+        <h3 style="font-family: var(--serif); font-size: 17px; margin: 8px 0 6px;">语境记忆</h3>
+        <p style="font-size: 13.5px; color: var(--ink-2);">每张卡都配化工例句 —— 记 viscosity 的同时复习了黏度概念，一词双收。</p>
+      </div>
+      <div class="card reveal d3">
+        <span class="card-tag rust">METHOD</span>
+        <h3 style="font-family: var(--serif); font-size: 17px; margin: 8px 0 6px;">主动输出</h3>
+        <p style="font-size: 13.5px; color: var(--ink-2);">看英文面回忆词义后，再尝试用这个词造一个与本专业相关的句子 —— 输出一次胜过重看十次。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEC.02 语法 ================= -->
+<section class="sec" id="grammar" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.02</span>
+      <h2 class="sec-title">语法四大难点</h2>
+      <span class="sec-sub">GRAMMAR ESSENTIALS</span>
+    </div>
+    <div class="rule reveal"></div>
+
+    <div class="grid-2" style="margin-top: 36px;">
+      <div class="card reveal d1">
+        <span class="card-tag">G-01</span>
+        <h3 style="font-family: var(--serif); font-size: 18px; margin: 8px 0 6px;">时态体系 <span style="font-family: var(--mono); font-size: 11px; color: var(--teal);">TENSES</span></h3>
+        <p style="font-size: 13.5px; color: var(--ink-2); margin-bottom: 12px;">技术写作高频时态其实只有 5 个：</p>
+        <div style="overflow-x: auto;">
+          <table class="term-table">
+            <tr><th>时态</th><th>用途</th><th>例句</th></tr>
+            <tr><td>一般现在时</td><td>普遍规律</td><td>Water boils at 100°C.</td></tr>
+            <tr><td>一般过去时</td><td>已完成实验</td><td>We heated the mixture to 80°C.</td></tr>
+            <tr><td>现在完成时</td><td>已完成、有影响</td><td>The catalyst has deactivated.</td></tr>
+            <tr><td>被动语态</td><td>强调对象</td><td>The sample was filtered.</td></tr>
+            <tr><td>情态 + 完成</td><td>推断过去</td><td>The leak must have occurred.</td></tr>
+          </table>
+        </div>
+        <p style="font-size: 12.5px; color: var(--ink-3); margin-top: 10px;">关键规则：图表描述用现在时（Table 1 shows…），实验步骤用过去时被动式。</p>
+      </div>
+
+      <div class="card reveal d2">
+        <span class="card-tag teal">G-02</span>
+        <h3 style="font-family: var(--serif); font-size: 18px; margin: 8px 0 6px;">定语从句 <span style="font-family: var(--mono); font-size: 11px; color: var(--teal);">RELATIVE CLAUSES</span></h3>
+        <div class="formula" style="margin: 12px 0;">The reactor <i>which operates at high pressure</i> must be inspected.（限定）<br>The reactor, <i>which we built in 2024</i>, runs smoothly.（非限定）</div>
+        <p style="font-size: 13.5px; color: var(--ink-2);">
+          三步定位法：① 找先行词；② 判断从句缺什么成分（缺主语/宾语用 which/that，作状语用 where/when/why）；③
+          非限定从句（逗号隔开）补充说明、可删除，且 <b>不能用 that</b>。
+          文献中大量长难句都靠"剥掉定语从句"找主干。
+        </p>
+      </div>
+
+      <div class="card reveal d1">
+        <span class="card-tag rust">G-03</span>
+        <h3 style="font-family: var(--serif); font-size: 18px; margin: 8px 0 6px;">虚拟语气 <span style="font-family: var(--mono); font-size: 11px; color: var(--teal);">SUBJUNCTIVE</span></h3>
+        <div class="formula" style="margin: 12px 0;">If the temperature <i>had been</i> lower, the yield <i>would have increased</i>.</div>
+        <p style="font-size: 13.5px; color: var(--ink-2);">
+          与过去事实相反：had done + would have done（对过去实验的反事实推断，论文讨论部分高频）；
+          与现在相反：did/were + would do；建议要求类从句（suggest / require / recommend）用 <b>(should) + 动词原形</b>：
+          We recommend that the pressure <b>be</b> monitored continuously.
+        </p>
+      </div>
+
+      <div class="card reveal d2">
+        <span class="card-tag gold">G-04</span>
+        <h3 style="font-family: var(--serif); font-size: 18px; margin: 8px 0 6px;">非谓语动词 <span style="font-family: var(--mono); font-size: 11px; color: var(--teal);">NON-FINITE VERBS</span></h3>
+        <div class="formula" style="margin: 12px 0;">Heating the feed, we observed a sharp pressure drop.<br>The tower designed by Smith became the industry standard.</div>
+        <p style="font-size: 13.5px; color: var(--ink-2);">
+          现在分词（doing）表主动进行，过去分词（done）表被动完成，不定式（to do）表目的将来。
+          判别技巧：逻辑主语与主句一致 —— "加热料液"是我们发出的动作，所以用 Heating 而非 Heated。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEC.03 阅读写作 ================= -->
+<section class="sec" id="rw" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.03</span>
+      <h2 class="sec-title">阅读与写作</h2>
+      <span class="sec-sub">READING &amp; WRITING</span>
+    </div>
+    <div class="rule reveal"></div>
+
+    <div class="grid-2" style="margin-top: 36px;">
+      <div class="card reveal d1">
+        <span class="card-tag">R-01</span>
+        <h3 style="font-family: var(--serif); font-size: 18px; margin: 8px 0 6px;">文献精读四步法</h3>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">① 结构扫描（3 min）</div>
+          <p class="kp-body">只读标题、摘要、图表、结论，判断是否值得精读。</p>
+        </div>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">② 主干抽取</div>
+          <p class="kp-body">每段找主题句（常在段首），剥掉从句与插入语，画出一句话核心。</p>
+        </div>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">③ 术语建档</div>
+          <p class="kp-body">建一张"术语卡"：术语中英 + 定义 + 出现语境，与化工术语表联动。</p>
+        </div>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">④ 复述重构</div>
+          <p class="kp-body">合上论文，用英文 100 词复述方法与结论 —— 能复述才是真读懂。</p>
+        </div>
+      </div>
+
+      <div class="card reveal d2">
+        <span class="card-tag teal">W-01</span>
+        <h3 style="font-family: var(--serif); font-size: 18px; margin: 8px 0 6px;">学术写作句型库</h3>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">描述趋势</div>
+          <p class="kp-body">The conversion <b>increased sharply with</b> rising temperature. / A slight decline <b>was observed in</b> selectivity.</p>
+        </div>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">比较对比</div>
+          <p class="kp-body">Compared with the PFR, the CSTR <b>exhibits a</b> significantly lower <b>conversion</b>. / <b>In contrast to</b> absorption, stripping…</p>
+        </div>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">因果论述</div>
+          <p class="kp-body">This <b>can be attributed to</b> the mass-transfer limitation. / The pressure drop <b>resulted from</b> channel blockage.</p>
+        </div>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">审慎推断</div>
+          <p class="kp-body">These results <b>suggest that</b>… / It is <b>reasonable to conclude that</b>… 避免绝对化：慎用 prove / always。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-top: 26px;">
+      <span class="card-tag rust">W-02</span>
+      <h3 style="font-family: var(--serif); font-size: 18px; margin: 8px 0 10px;">中式英语纠错台 · Chinglish → English</h3>
+      <div style="overflow-x: auto;">
+        <table class="term-table">
+          <tr><th>中式表达 ✗</th><th>地道表达 ✓</th><th>说明</th></tr>
+          <tr><td>The experiment is very successful.</td><td>The experiment was highly successful.</td><td>实验已完成用过去时</td></tr>
+          <tr><td>We have finished the analysis yesterday.</td><td>We finished the analysis yesterday.</td><td>有明确过去时间不用完成时</td></tr>
+          <tr><td>discuss about the results</td><td>discuss the results</td><td>discuss 及物，不加 about</td></tr>
+          <tr><td>The data is very little.</td><td>The data are insufficient.</td><td>data 复数；little 不修饰不可数抽象</td></tr>
+          <tr><td>According to me, …</td><td>In my view, …</td><td>according to 后接他人/标准</td></tr>
+        </table>
+      </div>
+      <p style="font-size: 13px; color: var(--ink-3); margin-top: 12px;">写完一段就丢进 <a href="qa.html" style="color: var(--rust);">AI 问答</a> 让模型逐句批改，效率翻倍。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEC.04 听说 ================= -->
+<section class="sec" id="ls" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.04</span>
+      <h2 class="sec-title">听说训练</h2>
+      <span class="sec-sub">LISTENING &amp; SPEAKING</span>
+    </div>
+    <div class="rule reveal"></div>
+
+    <div class="grid-3" style="margin-top: 36px;">
+      <div class="card reveal d1">
+        <span class="card-tag">L-01</span>
+        <h3 style="font-family: var(--serif); font-size: 17px; margin: 8px 0 6px;">精听三遍法</h3>
+        <p style="font-size: 13.5px; color: var(--ink-2);">第一遍盲听抓大意；第二遍逐句听写，听不出的词就是你的"听力盲区"；第三遍对照原文精读，把盲区词录入闪卡。每天 10 分钟，一个月见效。</p>
+      </div>
+      <div class="card reveal d2">
+        <span class="card-tag teal">S-01</span>
+        <h3 style="font-family: var(--serif); font-size: 17px; margin: 8px 0 6px;">影子跟读 Shadowing</h3>
+        <p style="font-size: 13.5px; color: var(--ink-2);">滞后原音 0.5–1 秒同步复述。三阶段进阶：① 看稿跟读 → ② 盲跟（只听不说看） → ③ 录音自评。学术会议报告（Conference Talk）是化工学生最好的跟读素材。</p>
+      </div>
+      <div class="card reveal d3">
+        <span class="card-tag rust">P-01</span>
+        <h3 style="font-family: var(--serif); font-size: 17px; margin: 8px 0 6px;">连读与弱读</h3>
+        <p style="font-size: 13.5px; color: var(--ink-2);">听力卡顿多半败在连读：<b>辅音+元音</b>连读（pick~it~up）、<b>失去爆破</b>（goo(d) morning）、<b>弱读</b>（and → /ənd/，for → /fə/）。跟读时刻意模仿这些"吞音"。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEC.05 化工英语 ================= -->
+<section class="sec" id="esp" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.05</span>
+      <h2 class="sec-title">化工英语专题 · ESP</h2>
+      <span class="sec-sub">ENGLISH FOR CHEMICAL ENGINEERING</span>
+    </div>
+    <div class="rule reveal"></div>
+    <p class="sec-desc reveal">两条轨道的交汇点：读懂一篇英文文献、写出一页英文实验报告所需的一切。</p>
+
+    <div class="grid-2" style="margin-top: 36px;">
+      <div class="card reveal d1">
+        <span class="card-tag">PAPER</span>
+        <h3 style="font-family: var(--serif); font-size: 18px; margin: 8px 0 6px;">论文 IMRAD 结构</h3>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">I — Introduction 引言</div>
+          <p class="kp-body">漏斗结构：领域背景 → 已有研究 → 研究空白（gap）→ 本文贡献。高频句式：However, little attention has been paid to…</p>
+        </div>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">M — Methods 方法</div>
+          <p class="kp-body">过去时被动式为主，足以让人复现实验：The mixture was stirred at 600 rpm for 2 h.</p>
+        </div>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">R — Results 结果</div>
+          <p class="kp-body">只陈述数据不解释：Figure 3 shows that the yield reached 92%.</p>
+        </div>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">D — Discussion 讨论</div>
+          <p class="kp-body">解释数据、与文献对比、承认局限：The discrepancy may be attributed to…</p>
+        </div>
+      </div>
+
+      <div class="card reveal d2">
+        <span class="card-tag teal">PHRASES</span>
+        <h3 style="font-family: var(--serif); font-size: 18px; margin: 8px 0 6px;">实验报告高频句式</h3>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">实验目的</div>
+          <p class="kp-body">The objective of this experiment was to determine the overall heat transfer coefficient of a shell-and-tube exchanger.</p>
+        </div>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">操作描述</div>
+          <p class="kp-body">The feed was introduced at a flow rate of 20 L/h through a preheater.（注意：at a rate of + 数字 + 单位）</p>
+        </div>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">误差分析</div>
+          <p class="kp-body">The deviation of 5% from theoretical values can be attributed to heat loss to the surroundings.</p>
+        </div>
+        <div class="kp" style="border: none; padding: 10px 0;">
+          <div class="kp-title" style="font-size: 15px;">结论表述</div>
+          <p class="kp-body">It can be concluded that the column performance met the design specification under the tested conditions.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-top: 26px;">
+      <span class="card-tag rust">READING</span>
+      <h3 style="font-family: var(--serif); font-size: 18px; margin: 8px 0 10px;">长难句解剖示范</h3>
+      <div class="formula" style="margin: 14px 0;">[The temperature at which the reaction rate reaches its maximum], <i>which is determined primarily by
+      the catalyst activity</i>, [must be maintained within ±2°C to prevent thermal runaway].</div>
+      <p style="font-size: 13.5px; color: var(--ink-2); margin-top: 10px;">
+        ① 主干：The temperature must be maintained（主谓宾）。② <b>at which…</b> 是介词前置的定语从句，修饰 temperature（= the reaction rate reaches its maximum <b>at</b> the temperature）。
+        ③ <b>which is determined…</b> 非限定从句补充说明。④ <b>to prevent…</b> 不定式表目的。
+        直译核心：温度必须维持在 ±2°C 内；该温度由催化剂活性决定；目的是防止热失控。 —— 四层信息一次拆清。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEC.06 测验 ================= -->
+<section class="sec" id="quiz" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.06</span>
+      <h2 class="sec-title">英语随堂测验</h2>
+      <span class="sec-sub">SELF-ASSESSMENT · 8 QUESTIONS</span>
+    </div>
+    <div class="rule reveal"></div>
+
+    <div id="quizZone" style="margin-top: 36px;" class="reveal"></div>
+
+    <div style="display: flex; align-items: center; gap: 18px; margin-top: 24px; flex-wrap: wrap;">
+      <button class="btn dark sm" id="quizReset">↻ 重做测验</button>
+      <div id="quizScore" style="font-family: var(--mono); font-size: 14px; font-weight: 700;"></div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+
+<script src="js/shared.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- 每日一句 ---------- */
+  var DAILY = [
+    ["传热的速率与温差成正比。", "The rate of heat transfer is proportional to the temperature difference."],
+    ["回流比是精馏操作中最重要的参数。", "The reflux ratio is the most important parameter in distillation operation."],
+    ["该催化剂在高温下会失活。", "The catalyst tends to deactivate at elevated temperatures."],
+    ["实验结果表明该方法收率更高。", "The experimental results indicate that this method gives a higher yield."],
+    ["黏度随温度升高而降低。", "The viscosity decreases with increasing temperature."],
+    ["所有设备都应定期检查。", "All equipment should be inspected on a regular basis."],
+    ["若当时温度再低一点，副反应本可以避免。", "The side reaction could have been avoided if the temperature had been lower."],
+    ["安全阀的作用是防止系统超压。", "The function of a relief valve is to prevent the system from over-pressurization."]
+  ];
+  var d = new Date();
+  var idx = (d.getFullYear() + d.getMonth() * 31 + d.getDate()) % DAILY.length;
+  document.getElementById("dailyZh").textContent = "「 " + DAILY[idx][0] + " 」";
+  document.getElementById("dailyEn").textContent = DAILY[idx][1];
+
+  /* ---------- 闪卡数据 ---------- */
+  var CARDS = [
+    { c: "cet4", w: "substantial", p: "/səbˈstænʃl/", m: "adj. 大量的；坚固的；实质性的", e: "The new plant requires a <b>substantial</b> investment in safety systems." },
+    { c: "cet4", w: "derive", p: "/dɪˈraɪv/", m: "v. 源于；从…推导出", e: "Most plastics <b>derive</b> from petroleum feedstocks." },
+    { c: "cet4", w: "transform", p: "/trænsˈfɔːm/", m: "v. 使转变；转化", e: "The boiler <b>transforms</b> water into high-pressure steam." },
+    { c: "cet4", w: "absorb", p: "/əbˈzɔːb/", m: "v. 吸收；使专心", e: "The column <b>absorbs</b> CO₂ with an aqueous amine solution." },
+    { c: "cet4", w: "manufacture", p: "/ˌmænjuˈfæktʃə/", m: "v./n. 制造；生产", e: "The catalyst is <b>manufactured</b> in a batch reactor." },
+    { c: "cet4", w: "capacity", p: "/kəˈpæsəti/", m: "n. 容量；能力；生产量", e: "The tower has a processing <b>capacity</b> of 500 tons per day." },
+    { c: "cet4", w: "efficient", p: "/ɪˈfɪʃnt/", m: "adj. 高效的", e: "Plate heat exchangers are more <b>efficient</b> than shell-and-tube types." },
+    { c: "cet4", w: "resistance", p: "/rɪˈzɪstəns/", m: "n. 阻力；电阻；抵抗", e: "The flow <b>resistance</b> increases with pipe roughness." },
+    { c: "cet4", w: "transfer", p: "/trænsˈfɜː/", m: "v./n. 传递；转移", e: "Heat <b>transfer</b> occurs by conduction, convection and radiation." },
+    { c: "cet4", w: "maintain", p: "/meɪnˈteɪn/", m: "v. 维持；保养", e: "The pressure is <b>maintained</b> at 3 MPa by a control valve." },
+    { c: "cet4", w: "monitor", p: "/ˈmɒnɪtə/", m: "v./n. 监测；监视器", e: "The operator <b>monitors</b> the furnace temperature continuously." },
+    { c: "cet4", w: "analysis", p: "/əˈnæləsɪs/", m: "n. 分析（复数 analyses）", e: "The error <b>analysis</b> shows a deviation of 5% from theory." },
+    { c: "cet6", w: "gradient", p: "/ˈɡreɪdiənt/", m: "n. 梯度；（物理量的）变化率", e: "A temperature <b>gradient</b> drives heat through the wall." },
+    { c: "cet6", w: "equilibrium", p: "/ˌiːkwɪˈlɪbriəm/", m: "n. 平衡（复数 equilibria）", e: "The reaction reaches <b>equilibrium</b> after four hours." },
+    { c: "cet6", w: "viscosity", p: "/vɪˈskɒsəti/", m: "n. 黏度", e: "The <b>viscosity</b> of the oil drops sharply above 60°C." },
+    { c: "cet6", w: "velocity", p: "/vəˈlɒsəti/", m: "n. 速度（矢量）", e: "The superficial gas <b>velocity</b> is kept below the flooding point." },
+    { c: "cet6", w: "volatile", p: "/ˈvɒlətaɪl/", m: "adj. 挥发性的；易变的", e: "The <b>volatile</b> solvent must be stored in a sealed tank." },
+    { c: "cet6", w: "corrosive", p: "/kəˈrəʊsɪv/", m: "adj. 腐蚀性的", e: "Hydrochloric acid is highly <b>corrosive</b> to carbon steel." },
+    { c: "cet6", w: "optimize", p: "/ˈɒptɪmaɪz/", m: "v. 优化", e: "We <b>optimized</b> the reflux ratio to minimize energy use." },
+    { c: "cet6", w: "rigorous", p: "/ˈrɪɡərəs/", m: "adj. 严格的；严密的", e: "A <b>rigorous</b> safety review was conducted before start-up." },
+    { c: "cet6", w: "deviation", p: "/ˌdiːviˈeɪʃn/", m: "n. 偏差；偏离", e: "Any <b>deviation</b> from the operating procedure must be reported." },
+    { c: "cet6", w: "empirical", p: "/ɪmˈpɪrɪkl/", m: "adj. 经验的（非理论推导）", e: "The <b>empirical</b> correlation fits the data within ±8%." },
+    { c: "cet6", w: "simulate", p: "/ˈsɪmjuleɪt/", m: "v. 模拟；仿真", e: "The column was <b>simulated</b> using Aspen Plus." },
+    { c: "cet6", w: "hypothesis", p: "/haɪˈpɒθəsɪs/", m: "n. 假设（复数 hypotheses）", e: "Our <b>hypothesis</b> is that mass transfer limits the rate." },
+    { c: "esp", w: "distillation", p: "/ˌdɪstɪˈleɪʃn/", m: "n. 蒸馏；精馏", e: "Crude oil is separated by fractional <b>distillation</b>." },
+    { c: "esp", w: "reflux", p: "/ˈriːflʌks/", m: "n. 回流；回流液", e: "The <b>reflux</b> ratio was set to twice the minimum." },
+    { c: "esp", w: "catalyst", p: "/ˈkætəlɪst/", m: "n. 催化剂", e: "Iron-based <b>catalysts</b> are used in ammonia synthesis." },
+    { c: "esp", w: "solvent", p: "/ˈsɒlvənt/", m: "n. 溶剂", e: "The <b>solvent</b> is recovered by stripping and recycled." },
+    { c: "esp", w: "exothermic", p: "/ˌeksəʊˈθɜːmɪk/", m: "adj. 放热的（反义 endothermic）", e: "The reaction is strongly <b>exothermic</b>, so the reactor needs cooling." },
+    { c: "esp", w: "yield", p: "/jiːld/", m: "n. 收率；产量 v. 产生", e: "The process gives a product <b>yield</b> of 95 percent." },
+    { c: "esp", w: "batch", p: "/bætʃ/", m: "adj./n. 间歇的；一批", e: "Specialty chemicals are produced in <b>batch</b> reactors." },
+    { c: "esp", w: "pipeline", p: "/ˈpaɪplaɪn/", m: "n. 管道；管线", e: "The crude oil <b>pipeline</b> spans 1,200 kilometers." },
+    { c: "esp", w: "throughput", p: "/ˈθruːpʊt/", m: "n. 处理量；吞吐量", e: "Debottlenecking raised the plant <b>throughput</b> by 15%." },
+    { c: "esp", w: "effluent", p: "/ˈefluənt/", m: "n. 废水；排出物", e: "The <b>effluent</b> must meet the discharge standard before release." },
+    { c: "esp", w: "scale-up", p: "/ˈskeɪl ʌp/", m: "n./v. 放大（实验→工业）", e: "Lab success does not guarantee a smooth <b>scale-up</b>." },
+    { c: "esp", w: "specification", p: "/ˌspesɪfɪˈkeɪʃn/", m: "n. 规格；技术规范", e: "The product meets all ASTM <b>specifications</b>." }
+  ];
+
+  var deck = CARDS.slice();
+  var pos = 0;
+  var cat = "all";
+  var cardEl = document.getElementById("flashcard");
+
+  function applyCat() {
+    deck = CARDS.filter(function (c) { return cat === "all" || c.c === cat; });
+    pos = 0;
+    renderCard(false);
+  }
+
+  function renderCard(keepFlip) {
+    if (!deck.length) return;
+    if (!keepFlip) cardEl.classList.remove("flipped");
+    var c = deck[pos];
+    document.getElementById("fWord").textContent = c.w;
+    document.getElementById("fPhon").textContent = c.p;
+    document.getElementById("fDef").innerHTML = c.m;
+    document.getElementById("fEx").innerHTML = c.e;
+    var catName = { cet4: "CET-4", cet6: "CET-6", esp: "ESP · 化工英语" }[c.c];
+    document.getElementById("fCat").textContent = catName;
+    document.getElementById("fCount").textContent = (pos + 1) + " / " + deck.length;
+  }
+
+  cardEl.addEventListener("click", function () { cardEl.classList.toggle("flipped"); });
+  document.getElementById("fPrev").addEventListener("click", function () {
+    pos = (pos - 1 + deck.length) % deck.length; renderCard();
+  });
+  document.getElementById("fNext").addEventListener("click", function () {
+    pos = (pos + 1) % deck.length; renderCard();
+  });
+  document.getElementById("fShuffle").addEventListener("click", function () {
+    for (var i = deck.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = deck[i]; deck[i] = deck[j]; deck[j] = t;
+    }
+    pos = 0; renderCard();
+    window.MST_TOAST("已打乱卡组 SHUFFLED");
+  });
+  document.getElementById("flashCats").addEventListener("click", function (ev) {
+    var btn = ev.target.closest(".chip");
+    if (!btn) return;
+    this.querySelectorAll(".chip").forEach(function (b) { b.classList.remove("on"); });
+    btn.classList.add("on");
+    cat = btn.dataset.cat;
+    applyCat();
+  });
+
+  renderCard();
+
+  /* ---------- 测验 ---------- */
+  var QUIZ = [
+    {
+      q: "The results indicate that the new catalyst ______ the reaction rate significantly.",
+      opts: ["enhances", "enhance", "is enhanced to", "enhanced by"],
+      a: 0,
+      e: "主语 catalyst 为单数，且表示一般性结论用一般现在时主动语态 → enhances。"
+    },
+    {
+      q: "If we had used a smaller packing, the pressure drop ______ lower.",
+      opts: ["would be", "would have been", "will be", "had been"],
+      a: 1,
+      e: "与过去事实相反的虚拟语气：if 从句 had done，主句 would have done。"
+    },
+    {
+      q: "选择正确的句子：",
+      opts: [
+        "Discussed the results, we drew a conclusion.",
+        "Having discussed the results, we drew a conclusion.",
+        "Discussing the results, a conclusion was drawn.",
+        "To discuss the results, we drew a conclusion."
+      ],
+      a: 1,
+      e: "分词逻辑主语必须与主句一致（we discussed → we drew）；A 缺谓语结构，C 分词悬垂，D 不定式表目的但逻辑颠倒。"
+    },
+    {
+      q: "The tower ______ diameter is 2 meters was commissioned last year.",
+      opts: ["which", "who", "whose", "its"],
+      a: 2,
+      e: "先行词 tower 与 diameter 是所属关系，用 whose（= the diameter of the tower）。"
+    },
+    {
+      q: "\"The viscosity of the liquid ______ with increasing temperature.\" 横线处应填：",
+      opts: ["decreases", "decrease", "is decreased", "decreasing"],
+      a: 0,
+      e: "表达普适规律用一般现在时主动语态，主语 viscosity 单数。"
+    },
+    {
+      q: "实验报告方法部分最恰当的一句是：",
+      opts: [
+        "We mix the two solutions and observe the color.",
+        "The two solutions were mixed and the color was observed.",
+        "The two solutions are mixing now.",
+        "Mix the two solutions, please."
+      ],
+      a: 1,
+      e: "Methods 部分用过去时被动式，强调操作对象而非操作者。"
+    },
+    {
+      q: "\"It is recommended that the valve ______ checked every month.\"",
+      opts: ["is", "be", "was", "will be"],
+      a: 1,
+      e: "recommend 后的宾语从句用虚拟语气 (should) + 动词原形 → be checked。"
+    },
+    {
+      q: "下列哪个词与 \"the yield of the reactor\" 中的 yield 意义最接近？",
+      opts: ["output quantity", "input feed", "reaction time", "operating cost"],
+      a: 0,
+      e: "化工语境中 yield 指产出/收率，与 output quantity 同义；其他选项为干扰项。"
+    }
+  ];
+
+  var zone = document.getElementById("quizZone");
+  var scoreEl = document.getElementById("quizScore");
+  var answered = {};
+
+  function render() {
+    zone.innerHTML = QUIZ.map(function (item, i) {
+      return '<div class="quiz-q" data-qi="' + i + '">' +
+        '<div class="q-title"><span class="q-no">Q' + (i + 1) + '</span><span>' + item.q + '</span></div>' +
+        '<div class="quiz-opts">' +
+        item.opts.map(function (o, j) {
+          return '<button class="quiz-opt" data-qi="' + i + '" data-oi="' + j + '"><span class="opt-key">' + "ABCD".charAt(j) + '</span><span>' + o + '</span></button>';
+        }).join("") +
+        '</div>' +
+        '<div class="quiz-explain">解析：' + item.e + '</div>' +
+        '</div>';
+    }).join("");
+    answered = {};
+    scoreEl.textContent = "";
+  }
+
+  zone.addEventListener("click", function (ev) {
+    var btn = ev.target.closest(".quiz-opt");
+    if (!btn) return;
+    var qi = +btn.dataset.qi, oi = +btn.dataset.oi;
+    if (answered[qi] !== undefined) return;
+    answered[qi] = oi;
+    var q = QUIZ[qi];
+    var qEl = zone.querySelector('[data-qi="' + qi + '"]');
+    qEl.querySelectorAll(".quiz-opt").forEach(function (b, j) {
+      b.disabled = true;
+      if (j === q.a) b.classList.add("right");
+      else if (j === oi) b.classList.add("wrong");
+    });
+    qEl.querySelector(".quiz-explain").classList.add("show");
+    var done = Object.keys(answered).length;
+    if (done === QUIZ.length) {
+      var right = Object.keys(answered).filter(function (k) { return answered[k] === QUIZ[k].a; }).length;
+      scoreEl.textContent = "▸ 得分：" + right + " / " + QUIZ.length + (right === QUIZ.length ? "　满分，flawless grammar！" : "　错题请看解析巩固。");
+      scoreEl.style.color = right === QUIZ.length ? "var(--teal)" : "var(--rust)";
+    }
+  });
+
+  document.getElementById("quizReset").addEventListener("click", render);
+  render();
+})();
+</script>
+</body>
+</html>

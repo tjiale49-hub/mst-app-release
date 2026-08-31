@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工具下载 · 分子语堂</title>
+<meta name="description" content="分子语堂工具站：在线化工计算器，可下载的六级备考资料包、化工求职资料包、速查手册、术语表 CSV、Anki 词库、进度同步 Worker 与 AI 代理脚本。">
+<meta name="theme-color" content="#1f2d27">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .calc-grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 860px) { .calc-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-page="tools">
+
+<div id="nav-mount"></div>
+
+<!-- ================= 页面横幅 ================= -->
+<header class="page-hero">
+  <div class="wrap">
+    <div class="ph-kicker reveal">TOOLBOX · DOWNLOAD CENTER</div>
+    <h1 class="reveal d1">工具下载</h1>
+    <div class="ph-en reveal d2">CALCULATE · CARRY · DEPLOY</div>
+    <p class="ph-desc reveal d2">
+      在线小工具开箱即用；离线工具一键下载 —— 全部免费、无依赖、离线可用，
+      部署脚本基于 Cloudflare Workers 免费额度构建。
+    </p>
+  </div>
+</header>
+
+<div class="hazard"></div>
+
+<!-- ================= SEC.01 在线计算器 ================= -->
+<section class="sec" id="calc">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.01</span>
+      <h2 class="sec-title">在线化工计算器</h2>
+      <span class="sec-sub">LIVE CALCULATOR · NO SERVER NEEDED</span>
+    </div>
+    <div class="rule reveal"></div>
+
+    <div class="calc-grid reveal" style="margin-top: 36px;">
+
+      <!-- 理想气体 -->
+      <div class="calc-panel">
+        <h4><span class="mono-tag">GAS</span> 理想气体 · PV = nRT</h4>
+        <div class="calc-row"><label>压力 P</label><input type="number" id="igP" value="101.325" step="any"><span style="font-family: var(--mono); font-size: 12px; color: var(--ink-3);">kPa</span></div>
+        <div class="calc-row"><label>体积 V</label><input type="number" id="igV" value="22.4" step="any"><span style="font-family: var(--mono); font-size: 12px; color: var(--ink-3);">L</span></div>
+        <div class="calc-row"><label>温度 t</label><input type="number" id="igT" value="0" step="any"><span style="font-family: var(--mono); font-size: 12px; color: var(--ink-3);">°C</span></div>
+        <div class="calc-result"><span>物质的量 n ≈</span><b id="igOut">—</b></div>
+      </div>
+
+      <!-- 稀释 -->
+      <div class="calc-panel">
+        <h4><span class="mono-tag">DILUTE</span> 溶液稀释 · C₁V₁ = C₂V₂</h4>
+        <div class="calc-row"><label>初始浓度</label><input type="number" id="diC1" value="1" step="any"><span style="font-family: var(--mono); font-size: 12px; color: var(--ink-3);">mol/L</span></div>
+        <div class="calc-row"><label>初始体积</label><input type="number" id="diV1" value="100" step="any"><span style="font-family: var(--mono); font-size: 12px; color: var(--ink-3);">mL</span></div>
+        <div class="calc-row"><label>目标浓度</label><input type="number" id="diC2" value="0.1" step="any"><span style="font-family: var(--mono); font-size: 12px; color: var(--ink-3);">mol/L</span></div>
+        <div class="calc-result"><span>需加水至 V₂ ≈</span><b id="diOut">—</b></div>
+      </div>
+
+      <!-- 压力换算 -->
+      <div class="calc-panel">
+        <h4><span class="mono-tag">PRESSURE</span> 压力单位换算</h4>
+        <div class="calc-row">
+          <label>数值</label>
+          <input type="number" id="prIn" value="1" step="any">
+          <select id="prUnit">
+            <option value="MPa">MPa</option>
+            <option value="kPa">kPa</option>
+            <option value="bar">bar</option>
+            <option value="atm">atm</option>
+            <option value="psi">psi</option>
+            <option value="mmHg">mmHg</option>
+          </select>
+        </div>
+        <div class="calc-result" id="prOut" style="display: block; line-height: 2;">
+          <div>MPa <b id="prA">—</b></div>
+          <div>kPa <b id="prB">—</b></div>
+          <div>bar <b id="prC">—</b></div>
+          <div>atm <b id="prD">—</b></div>
+          <div>psi <b id="prE">—</b></div>
+        </div>
+      </div>
+
+      <!-- 温度换算 -->
+      <div class="calc-panel">
+        <h4><span class="mono-tag">TEMP</span> 温度换算</h4>
+        <div class="calc-row">
+          <label>数值</label>
+          <input type="number" id="tmIn" value="25" step="any">
+          <select id="tmUnit">
+            <option value="C">°C 摄氏</option>
+            <option value="F">°F 华氏</option>
+            <option value="K">K 开尔文</option>
+          </select>
+        </div>
+        <div class="calc-result" id="tmOut" style="display: block; line-height: 2;">
+          <div>°C <b id="tmA">—</b></div>
+          <div>°F <b id="tmB">—</b></div>
+          <div>K <b id="tmC">—</b></div>
+        </div>
+        <p style="font-size: 11.5px; color: var(--ink-3); margin-top: 10px; font-family: var(--mono);">常压水沸点 100°C · 212°F · 373.15K</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="hazard"></div>
+
+<!-- ================= SEC.02 下载工具 ================= -->
+<section class="sec" id="downloads">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.02</span>
+      <h2 class="sec-title">离线工具库</h2>
+      <span class="sec-sub">DOWNLOAD &amp; GO · 9 TOOLS</span>
+    </div>
+    <div class="rule reveal"></div>
+    <p class="sec-desc reveal">点击下载即生成文件，保存在本地后可离线使用、随意分享。</p>
+
+    <div class="grid-3" style="margin-top: 40px;">
+
+      <div class="tool-card reveal d1" data-tool="cet6pack">
+        <div class="tool-head">
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#c24914" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20V4H6.5A2.5 2.5 0 004 6.5v13zM4 19.5A2.5 2.5 0 006.5 22H20v-5"/><path d="M9 8h6M9 11h4"/></svg></div>
+          <div><div class="tool-name">六级备考<br>资料包</div><span class="tool-fmt rust">.HTML · 单文件全集</span></div>
+        </div>
+        <p class="tool-desc">一站打包：考试结构 + <span class="dynWCount">645</span> 高频词全表 + <span class="dynECount">185</span> 条翻译表达库 + 写作框架与句型 + 60 天计划 + 自测 <span class="dynQCount">60</span> 题。打印出来就是纸质复习册。</p>
+        <ul class="tool-list">
+          <li>词汇全表带化工语境例句</li>
+          <li>离线可用 · 可打印成 A4</li>
+          <li>与线上备考中心内容同步</li>
+        </ul>
+        <button class="btn primary sm">⤓ 下载资料包</button>
+      </div>
+
+      <div class="tool-card reveal d2" data-tool="careerpack">
+        <div class="tool-head">
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0e6e63" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2M2 13h20"/></svg></div>
+          <div><div class="tool-name">化工求职<br>资料包</div><span class="tool-fmt">.HTML · 单文件全集</span></div>
+        </div>
+        <p class="tool-desc">求职知识技能一次打包：十大岗位地图 + 三级技能清单 + 简历量化改写 + 技术面八题 + <span class="dynCTipsCount">100</span> 条锦囊 + 自测 <span class="dynQCareerCount">40</span> 题。</p>
+        <ul class="tool-list">
+          <li>岗位方向与薪资参考区间</li>
+          <li>STAR 面试法 + 英文面三连</li>
+          <li>面试前夜快速过一遍</li>
+        </ul>
+        <button class="btn teal sm">⤓ 下载资料包</button>
+      </div>
+
+      <div class="tool-card reveal d2" id="sync" data-tool="syncworker">
+        <div class="tool-head">
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#20558a" stroke-width="2"><path d="M21 12a9 9 0 01-9 9m-9-9a9 9 0 019-9m0 18a9 9 0 009-9M3 12a9 9 0 019-9"/><path d="M12 7v5l3 3"/></svg></div>
+          <div><div class="tool-name">进度同步 Worker<br>（Cloudflare KV）</div><span class="tool-fmt rust">.JS · 约 4 分钟部署</span></div>
+        </div>
+        <p class="tool-desc">多设备同步学习进度：部署到你的 Cloudflare 免费账号，把每日打卡、生词本、测验记录存进自己的 KV 存储。</p>
+        <ul class="tool-list">
+          <li>可选口令保护，数据仅自己可见</li>
+          <li>与首页「上传/拉取进度」按钮直连</li>
+          <li>部署说明写在脚本头部注释</li>
+        </ul>
+        <button class="btn primary sm">⤓ 下载脚本</button>
+      </div>
+
+      <div class="tool-card reveal d3" id="proxy" data-tool="proxy">
+        <div class="tool-head">
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#c24914" stroke-width="2"><path d="M17.5 19a4.5 4.5 0 100-9 6 6 0 10-11.5 2"/><path d="M12 12v9M8 17l4-4 4 4"/></svg></div>
+          <div><div class="tool-name">Cloudflare Worker<br>AI 代理脚本</div><span class="tool-fmt rust">.JS · 约 3 分钟部署</span></div>
+        </div>
+        <p class="tool-desc">解决浏览器直连 AI 接口的 CORS 跨域问题，密钥可存于服务端不暴露。免费额度（每天 10 万次请求）对个人学习绰绰有余。</p>
+        <ul class="tool-list">
+          <li>流式（stream）响应完整透传</li>
+          <li>目标域名白名单，防滥用</li>
+          <li>内置部署说明与 wrangler.toml</li>
+        </ul>
+        <button class="btn primary sm">⤓ 下载脚本</button>
+      </div>
+
+      <div class="tool-card reveal d1" data-tool="handbook">
+        <div class="tool-head">
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0e6e63" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20V4H6.5A2.5 2.5 0 004 6.5v13zM4 19.5A2.5 2.5 0 006.5 22H20v-5"/></svg></div>
+          <div><div class="tool-name">化工原理<br>速查手册</div><span class="tool-fmt">.HTML · 单文件</span></div>
+        </div>
+        <p class="tool-desc">六大单元操作核心公式、判据与常用数据（R、标况体积、水的物性）浓缩成一张表，双击打开即查，考前复习利器。</p>
+        <ul class="tool-list">
+          <li>30+ 公式 · 变量说明 · 适用条件</li>
+          <li>离线可用，手机也能开</li>
+          <li>可直接打印成 A4 复习单</li>
+        </ul>
+        <button class="btn teal sm">⤓ 下载手册</button>
+      </div>
+
+      <div class="tool-card reveal d2" data-tool="calcx">
+        <div class="tool-head">
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#20558a" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h6M9 12h.01M12 12h.01M15 12h.01M9 16h.01M12 16h.01M15 16h.01"/></svg></div>
+          <div><div class="tool-name">化工计算器<br>离线版</div><span class="tool-fmt">.HTML · 单文件</span></div>
+        </div>
+        <p class="tool-desc">把本页的四组计算器打包带回家：理想气体、溶液稀释、压力与温度换算，无需联网。</p>
+        <ul class="tool-list">
+          <li>四个面板开箱即用</li>
+          <li>零依赖 · 100KB 不到</li>
+          <li>实验室电脑也能放一份</li>
+        </ul>
+        <button class="btn sm">⤓ 下载计算器</button>
+      </div>
+
+      <div class="tool-card reveal d2" data-tool="terms">
+        <div class="tool-head">
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#a8813a" stroke-width="2"><path d="M3 5h18M3 12h18M3 19h10"/><circle cx="18" cy="17" r="3"/><path d="M21 20l2 2"/></svg></div>
+          <div><div class="tool-name">化工英语<br>术语表</div><span class="tool-fmt">.CSV · <span class="dynTermsCount">125</span> 条</span></div>
+        </div>
+        <p class="tool-desc">中文 / English / 备注三列结构，Excel 直接打开；可导入背单词软件作为词库。</p>
+        <ul class="tool-list">
+          <li>覆盖五大单元操作 + 反应工程 + 安全</li>
+          <li>UTF-8 BOM 编码，中文不乱码</li>
+          <li>与站内术语表同步更新</li>
+        </ul>
+        <button class="btn sm">⤓ 下载术语表</button>
+      </div>
+
+      <div class="tool-card reveal d3" data-tool="anki">
+        <div class="tool-head">
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0e6e63" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 12h18"/></svg></div>
+          <div><div class="tool-name">核心词汇<br>Anki 词库</div><span class="tool-fmt">.CSV · <span class="dynWCount">645</span> 词</span></div>
+        </div>
+        <p class="tool-desc">六级 <span class="dynWCount">645</span> 高频词全量导出 + 化工语境例句，正面单词音标、背面释义与例句，导入 Anki / Quizlet 即用。</p>
+        <ul class="tool-list">
+          <li>每词配化工例句，双轨记忆</li>
+          <li>Anki「文件 → 导入」直接可用</li>
+          <li>可自行删改扩充</li>
+        </ul>
+        <button class="btn teal sm">⤓ 下载词库</button>
+      </div>
+
+      <div class="tool-card reveal d3" data-tool="plan">
+        <div class="tool-head">
+          <div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#c24914" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 15h3M13 15h3M8 19h3"/></svg></div>
+          <div><div class="tool-name">双轨学习<br>计划模板</div><span class="tool-fmt rust">.MD · 周计划</span></div>
+        </div>
+        <p class="tool-desc">化工 + 英语双栏周计划 Markdown 模板：目标、每日打卡、错题与生词本、周末复盘，复制进任何笔记软件即用。</p>
+        <ul class="tool-list">
+          <li>12 周滚动计划框架</li>
+          <li>艾宾浩斯复习节点表</li>
+          <li>Typora / Obsidian / 语雀通用</li>
+        </ul>
+        <button class="btn primary sm">⤓ 下载模板</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEC.03 使用说明 ================= -->
+<section class="sec" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-index">SEC.03</span>
+      <h2 class="sec-title">AI 代理部署三步走</h2>
+      <span class="sec-sub">CLOUDFLARE WORKERS · FREE TIER</span>
+    </div>
+    <div class="rule reveal"></div>
+
+    <div class="path reveal" style="margin-top: 36px;">
+      <div class="path-row">
+        <div><span class="path-stage">STEP 01</span></div>
+        <div>
+          <div class="path-name">下载脚本，注册 Cloudflare</div>
+          <p class="path-desc">下载上方代理脚本；在 <b>dash.cloudflare.com</b> 免费注册账号（国内可直连），进入 Workers &amp; Pages。</p>
+        </div>
+      </div>
+      <div class="path-row">
+        <div><span class="path-stage">STEP 02</span></div>
+        <div>
+          <div class="path-name">创建 Worker 并粘贴代码</div>
+          <p class="path-desc">「Create Worker」→ 粘贴脚本 → 设置环境变量：<b>TARGET_BASE</b>（如 https://api.siliconflow.cn/v1）与可选的 <b>API_KEY</b>（服务端存密钥，浏览器永不接触）。</p>
+        </div>
+      </div>
+      <div class="path-row">
+        <div><span class="path-stage">STEP 03</span></div>
+        <div>
+          <div class="path-name">把 Worker 地址填进问答室</div>
+          <p class="path-desc">部署后得到 <b>xxx.workers.dev</b> 地址，回到 <a href="qa.html" style="color: var(--rust); font-weight: 600;">AI 问答室</a> → 模型设置 → 自定义接口 → Base URL 填入该地址即可。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+
+<script src="js/data-words.js"></script>
+<script src="js/data-questions.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/tools.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- 在线计算器 ---------- */
+  var R = 8.314;
+
+  function fmt(n, d) {
+    if (!isFinite(n)) return "—";
+    var v = +n.toPrecision(4);
+    return (Math.abs(v) >= 1e5 || (Math.abs(v) < 1e-4 && v !== 0)) ? v.toExponential(3) : String(+v.toFixed(d || 4)).replace(/\.?0+$/, "");
+  }
+
+  function idealGas() {
+    var P = +document.getElementById("igP").value;
+    var V = +document.getElementById("igV").value;
+    var t = +document.getElementById("igT").value;
+    var T = t + 273.15;
+    var n = (P * V) / (R * T); // P kPa, V L → J 一致
+    document.getElementById("igOut").textContent = isFinite(n) ? fmt(n) + " mol" : "—";
+  }
+
+  function dilute() {
+    var C1 = +document.getElementById("diC1").value;
+    var V1 = +document.getElementById("diV1").value;
+    var C2 = +document.getElementById("diC2").value;
+    if (!C2 || !isFinite(C2) || C2 <= 0) { document.getElementById("diOut").textContent = "—"; return; }
+    var V2 = (C1 * V1) / C2;
+    document.getElementById("diOut").textContent = isFinite(V2) ? fmt(V2) + " mL" : "—";
+  }
+
+  var PR = { MPa: 1000, kPa: 1, bar: 100, atm: 101.325, psi: 6.8948, mmHg: 0.13332 };
+  function pressure() {
+    var v = +document.getElementById("prIn").value * PR[document.getElementById("prUnit").value];
+    document.getElementById("prA").textContent = fmt(v / 1000);
+    document.getElementById("prB").textContent = fmt(v);
+    document.getElementById("prC").textContent = fmt(v / 100);
+    document.getElementById("prD").textContent = fmt(v / 101.325);
+    document.getElementById("prE").textContent = fmt(v / 6.8948);
+  }
+
+  function temp() {
+    var v = +document.getElementById("tmIn").value;
+    var u = document.getElementById("tmUnit").value;
+    var c = u === "C" ? v : u === "F" ? (v - 32) * 5 / 9 : v - 273.15;
+    document.getElementById("tmA").textContent = fmt(c);
+    document.getElementById("tmB").textContent = fmt(c * 9 / 5 + 32);
+    document.getElementById("tmC").textContent = fmt(c + 273.15);
+  }
+
+  ["igP", "igV", "igT"].forEach(function (id) { document.getElementById(id).addEventListener("input", idealGas); });
+  ["diC1", "diV1", "diC2"].forEach(function (id) { document.getElementById(id).addEventListener("input", dilute); });
+  document.getElementById("prIn").addEventListener("input", pressure);
+  document.getElementById("prUnit").addEventListener("change", pressure);
+  document.getElementById("tmIn").addEventListener("input", temp);
+  document.getElementById("tmUnit").addEventListener("change", temp);
+
+  idealGas(); dilute(); pressure(); temp();
+})();
+</script>
+</body>
+</html>

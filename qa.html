@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 问答室 · 分子语堂</title>
+<meta name="description" content="分子语堂 AI 问答室：独立全页对话空间，内置硅基流动、智谱、DeepSeek 等免费模型预设，支持自定义模型接入，化工答疑与英语辅导一站完成。">
+<link rel="icon" href="icons/icon-192.png">`n<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">`n<link rel="manifest" href="manifest.webmanifest">`n<meta name="theme-color" content="#1f2d27">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  body.qa-body { height: 100vh; height: 100dvh; }
+  .qa-side-toggle { display: none; }
+  @media (max-width: 860px) {
+    .qa-side-toggle { display: inline-flex; }
+  }
+  .persona-select {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight: 700;
+    border: 2px solid var(--ink);
+    background: var(--card);
+    padding: 8px 10px;
+    color: var(--ink);
+    outline: none;
+    cursor: pointer;
+  }
+  .msg-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .msg-action {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 1.5px solid var(--ink-2);
+    background: none;
+    color: var(--ink-2);
+    padding: 3px 10px;
+    transition: all 0.15s;
+  }
+  .msg-action:hover { border-color: var(--ink); color: var(--ink); background: var(--paper-deep); }
+  .temp-row { display: flex; align-items: center; gap: 12px; }
+  .temp-row input[type="range"] { flex: 1; accent-color: var(--rust); }
+  .temp-val { font-family: var(--mono); font-size: 13px; font-weight: 700; min-width: 30px; color: var(--rust); }
+</style>
+</head>
+<body data-page="qa" data-no-footer class="qa-body">
+
+<div id="nav-mount"></div>
+
+<div class="qa-shell">
+
+  <!-- ============ 侧栏 ============ -->
+  <aside class="qa-side" id="qaSide">
+    <div class="qa-side-head">
+      <div class="t">对话记录</div>
+      <div class="s">SESSIONS · STORED LOCALLY</div>
+    </div>
+    <button class="btn dark qa-new" id="qaNew">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+      新建对话
+    </button>
+    <div class="qa-sessions" id="qaSessions"></div>
+    <div class="qa-side-foot">
+      <button class="model-chip" id="modelChip" title="点击配置模型">
+        <span class="m-dot off" id="modelDot"></span>
+        <span class="m-name" id="modelName">未配置 · 点击设置</span>
+        <span class="m-cfg">⚙</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ============ 主区 ============ -->
+  <main class="qa-main">
+    <div class="qa-topbar">
+      <button class="btn sm qa-side-toggle" id="qaSideToggle">☰ 会话</button>
+      <div class="t">AI 问答室<small>MOLECULE &amp; MORPHEME · Q&amp;A ROOM</small></div>
+      <div class="qa-topbar-actions">
+        <select class="persona-select" id="personaSel" title="AI 助教角色">
+          <option value="general">◎ 通用助手</option>
+          <option value="chem">⚗ 化工导师</option>
+          <option value="eng">✎ 英语教师</option>
+          <option value="translator">⇄ 文献翻译官</option>
+          <option value="cet6">✦ 六级教练</option>
+          <option value="career">▶ 求职导师</option>
+        </select>
+        <button class="btn sm" id="qaSettingsBtn">⚙ 模型设置</button>
+      </div>
+    </div>
+
+    <div class="qa-msgs" id="qaMsgs">
+      <div class="qa-msgs-inner" id="qaMsgsInner"></div>
+    </div>
+
+    <div class="qa-inputbar">
+      <div class="qa-inputbar-inner">
+        <div class="qa-input-box">
+          <textarea id="qaInput" rows="1" placeholder="向 AI 提问：化工原理 / 英语语法 / 文献翻译…（Enter 发送 · Shift+Enter 换行）"></textarea>
+          <button class="qa-send" id="qaSend" title="发送">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </div>
+        <div class="qa-foot-hint">内容由 AI 生成，请核对关键公式与数据 · API Key 仅保存在本地浏览器，不会上传</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ============ 模型配置弹窗 ============ -->
+<div class="modal-mask" id="settingsModal">
+  <div class="modal">
+    <div class="modal-head">
+      <div><span class="t">模型配置</span><span class="s">MODEL CONFIGURATION · STORED LOCALLY</span></div>
+      <button class="modal-close" id="settingsClose" title="关闭">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label>服务商 · Provider</label>
+        <div class="provider-grid" id="providerGrid"></div>
+      </div>
+      <div class="field">
+        <label>接口地址 · Base URL</label>
+        <input id="cfgBase" type="text" placeholder="https://api.example.com/v1" spellcheck="false">
+        <div class="hint">OpenAI 兼容接口地址；选择服务商后自动填入，可手动修改。</div>
+      </div>
+      <div class="field">
+        <label>API 密钥 · API Key</label>
+        <input id="cfgKey" type="password" placeholder="sk-…" spellcheck="false" autocomplete="off">
+        <div class="hint">仅保存在本浏览器 localStorage。密钥请在各服务商官网注册获取（多数提供免费额度）。</div>
+      </div>
+      <div class="field">
+        <label>模型 · Model</label>
+        <select id="cfgModel"></select>
+        <input id="cfgModelCustom" type="text" placeholder="或手动输入模型名（优先于上方选择）" style="margin-top: 10px;" spellcheck="false">
+        <div class="hint">标注「免费」的模型在对应平台无需付费即可调用（需注册）。</div>
+      </div>
+      <div class="field">
+        <label>创造性 · Temperature</label>
+        <div class="temp-row">
+          <input type="range" id="cfgTemp" min="0" max="1.5" step="0.1" value="0.7">
+          <span class="temp-val" id="cfgTempVal">0.7</span>
+        </div>
+        <div class="hint">技术答疑建议 0.2–0.5（更严谨）；头脑风暴、写作润色建议 0.7–1.0。</div>
+      </div>
+      <div class="field">
+        <label>跨域提示 · CORS Note</label>
+        <div class="hint" style="border-left: 3px solid var(--rust); padding-left: 10px;">
+          个别服务商不允许浏览器直接调用（会报 CORS 跨域错误）。可前往
+          <a href="tools.html#proxy">工具下载页</a> 获取 Cloudflare Worker 代理脚本，部署后把代理地址填入 Base URL 即可。
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn sm" id="cfgTest">测试连接</button>
+      <button class="btn primary sm" id="cfgSave">保存配置</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/shared.js"></script>
+<script src="js/qa.js"></script>
+</body>
+</html>
